@@ -28,7 +28,7 @@ st.set_page_config(
 )
 
 st.title("📊 Consolidador de Sumas y Saldos")
-st.caption("Consolida el año N y el año N-1 en un nuevo Excel, con el bloque del año N-1 desplazado desde la columna AD.")
+st.caption("Consolida el año N y el año N-1 en un nuevo Excel, con el bloque del año N-1 desplazado desde la columna AE.")
 
 
 # ============================================================
@@ -478,7 +478,7 @@ def generar_excel_consolidado(
 
     wb = Workbook()
     ws = wb.active
-    ws.title = "Consolidado"
+    ws.title = "SyS Holded"
 
     # Estilos
     fill_title = PatternFill("solid", start_color="2E75B6", end_color="2E75B6")
@@ -645,7 +645,7 @@ with st.sidebar:
 
     columna_inicio_n1 = st.text_input(
         "Columna donde empieza el resto de datos del Año N-1",
-        value="AD",
+        value="AE",
         max_chars=3,
         help="Cuenta del Año N-1 irá en A. El resto de datos empezará aquí."
     ).strip().upper()
@@ -752,7 +752,7 @@ if procesar:
         try:
             column_index_from_string(columna_inicio_n1)
         except Exception:
-            raise AppValidationError("La columna de inicio para Año N-1 no es válida. Usa algo como AD, AF, AG, etc.")
+            raise AppValidationError("La columna de inicio para Año N-1 no es válida. Usa algo como AE, AF, AG, etc.")
 
         with st.status("Procesando archivos...", expanded=True) as status:
             st.write("Leyendo y limpiando Año N...")
